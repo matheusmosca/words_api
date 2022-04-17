@@ -15,10 +15,21 @@ defmodule Words.Application do
 
     Application.put_env(:phoenix, :json_library, Jason)
 
+    host = System.get_env("PHX_HOST") || "localhost"
+    port = System.get_env("PORT") || 5001
+    secret_key_base = System.get_env("SECRET_KEY_BASE")
     Application.put_env(:words, Words.Endpoint,
-      http: [ip: {127, 0, 0, 1}, port: 5001],
+      url: [host: host, port: port],
+      http: [
+        # Enable IPv6 and bind on all interfaces.
+        # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
+        # See the documentation on https://hexdocs.pm/plug_cowboy/Plug.Cowboy.html
+        # for details about using IPv6 vs IPv4 and loopback vs public addresses.
+        ip: {0, 0, 0, 0, 0, 0, 0, 0},
+        port: port
+      ],
       server: true,
-      secret_key_base: String.duplicate("s", 64)
+      secret_key_base: secret_key_base
     )
 
     # See https://hexdocs.pm/elixir/Supervisor.html
