@@ -18,6 +18,7 @@ defmodule Words.Application do
     host = System.get_env("PHX_HOST") || "localhost"
     port = System.get_env("PORT") || 5001
     secret_key_base = System.get_env("SECRET_KEY_BASE")
+
     Application.put_env(:words, Words.Endpoint,
       url: [host: host, port: port],
       http: [
