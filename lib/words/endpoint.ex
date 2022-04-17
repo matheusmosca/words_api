@@ -3,5 +3,6 @@ defmodule Words.Endpoint do
 
   plug(Plug.RequestId)
   plug(Plug.Logger)
-  plug(Plug.Router)
+
+  plug(Words.Router)
 end

@@ -5,7 +5,14 @@ defmodule Words.Domain.ParserTest do
   describe "Words.Domain.Parser.frequency/1" do
     test "should return a map with the frequency of each word appearence" do
       words = ~w(banana apple banana orange coconut coconut)
-      assert Words.Domain.Parser.frequency(words) == %{"banana" => 2, "apple" => 1, "coconut" => 2, "orange" => 1}
+
+      assert Words.Domain.Parser.frequency(words) == %{
+               "banana" => 2,
+               "apple" => 1,
+               "coconut" => 2,
+               "orange" => 1
+             }
+
       assert Words.Domain.Parser.frequency([]) == %{}
     end
   end

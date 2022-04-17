@@ -8,9 +8,9 @@ defmodule Words.Router do
   scope "/api/v1/words", Words.Controllers do
     pipe_through(:json_api)
 
-    get("sort", :ParserController, :sort)
-    get("concat", :ParserController, :concat)
-    get("snake_case", :ParserController, :snake_case)
-    get("frequency", :ParserController, :frequency)
+    get("/sort", Parser, :sort)
+    get("/concat", Parser, :concat)
+    get("/snake_case", Parser, :snake_case)
+    get("/frequency", Parser, :frequency)
   end
 end
